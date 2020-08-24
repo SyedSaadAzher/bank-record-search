@@ -54,6 +54,6 @@ var BanksSchema = new Schema({
 
 });
 
-var Banks = mongoose.model("banks", BanksSchema);
+var BanksModel = mongoose.model("banks", BanksSchema);
 
-module.exports = Banks;
+module.exports = BanksModel;

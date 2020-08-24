@@ -40,7 +40,7 @@ app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", banksRouter);
+app.use("/app", banksRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
