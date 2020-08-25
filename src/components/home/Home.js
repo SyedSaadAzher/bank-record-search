@@ -11,7 +11,6 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      banks: [],
       data: [],
     };
   }
@@ -32,10 +31,7 @@ class Home extends Component {
       title="Banks List"
       icons={getIcons()}
       columns={getColumnConfig()}
-      data={getRowsList(this.state.data)}
-      onRowClick={(event) => {
-        console.log(event.target);
-      }}
+      data={getRowsList(this.state.data, this.props.history)}
       options={getTableOptions()}
     />
       );

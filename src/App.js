@@ -6,6 +6,7 @@ import Context from "./Context";
 import Navbar from "./components/navbar/Navbar";
 import Register from "./components/auth/Register";
 import Home from "./components/home/Home";
+import BankDetails from "./components/bankDetails/BankDetails"
 
 export default class App extends Component {
   constructor(props) {
@@ -66,6 +67,7 @@ export default class App extends Component {
             <Navbar />
             <Switch>
               <Route exact path="/" component={Home} />
+              <Route exact path="/banks/:bankId" component={BankDetails} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
             </Switch>

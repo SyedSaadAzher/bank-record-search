@@ -17,7 +17,9 @@ class Navbar extends Component {
         aria-label="main navigation"
       >
         <div className="navbar-brand">
+        <Link to="/" className="navbar-item">
           <b className="navbar-item is-size-4 ">BANK SEARCH</b>
+        </Link>
         </div>
         <div className={`navbar-menu`}>
           {!this.props.context.user ? (
@@ -32,8 +34,8 @@ class Navbar extends Component {
             </>
           ) : (
               <>
-                <a className="navbar-item" onClick={this.props.context.logout}>
-                  Logout
+              <a className="navbar-item" onClick={this.props.context.logout}>
+                Logout
               </a>
               </>
             )}

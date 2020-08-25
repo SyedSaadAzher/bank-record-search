@@ -13,6 +13,8 @@ import ViewColumn from "@material-ui/icons/ViewColumn";
 import DeleteIcon from "@material-ui/icons/Delete";
 import ClearIcon from "@material-ui/icons/Clear";
 import EditIcon from "@material-ui/icons/Edit";
+import Button from '@material-ui/core/Button';
+import { Redirect } from "react-router-dom";
 
 export function getIcons() {
   return {
@@ -36,36 +38,32 @@ export function getIcons() {
 
 export function getColumnConfig() {
   return [
+    { title: 'SELECT', field: 'selectButton'},
     { title: 'BANK', field: 'bank' },
     { title: 'ADDRESS', field: 'address' },
     { title: 'BRANCH', field: 'branch'},
     { title: 'CITY1', field: 'city1'},
     { title: 'CITY2', field: 'city2'},
-    // { title:'IFSC', feild:'ifsc', numeric: true},
-    // { title:'MICR', feild:'micr'},
-    // { title:'PHONE' , feild:'mobile'},
-    // { title:'STATE' , feild:'state'},
-    // { title:'CITY2' , feild:'city'},
-    // { title:'STD CODE' , feild:'pin'}
   ];
 }
 
-export function getRowsList(data) {
+export function getRowsList(data, history) {
   const updatedData = [];
   for(let i = 0; i < data.length; i++) {
     let tempObj = {};
+    tempObj.selectButton = <button 
+    id={data[i]['_id']} onClick={(event) => {
+      history.push(`banks/${event.target.id}`);
+    }} color="primary">See Details
+    </button>;
     tempObj.bank = data[i]['BANK'];
     tempObj.address = data[i]['ADDRESS'];
     tempObj.branch = data[i]['BRANCH'];
     tempObj.city1 = data[i]['CITY1'];
     tempObj.city2 = data[i]['CITY2'];
-    // tempObj.ifsc = data[i]['IFSC'];
-    // tempObj.micr = data[i]['MICR'];
-    // tempObj.mobile = data[i]['PHONE'];
-    // tempObj.state = data[i]['STATE'];
     updatedData.push(tempObj);
   }
-  return updatedData
+  return updatedData;
 }
 
 export function getTableOptions() {

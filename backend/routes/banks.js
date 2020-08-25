@@ -12,4 +12,9 @@ router.get("/banks", async function (req, res) {
   return new APIResponseHandler().handle(res, result, "GET");
 });
 
+router.get("/banks/:bankId", async function (req, res) {
+  let result = await new Banks().getBankWithId(req);
+  return new APIResponseHandler().handle(res, result, "GET");
+});
+
 module.exports = router;
