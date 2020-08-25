@@ -12,56 +12,53 @@ export default class App extends Component {
     super(props);
     //Initial state of the application
     this.state = {
-      user: {
-        name: 'Faraz',
-        email: 'isaifullah01@gmail.com'
-      },
+      user: null,
     };
     this.routerRef = React.createRef();
   }
 
   //When user logs in the user object of application's state is set
-  // login = (user) => {
-  //   if (user) {
-  //     this.setState({ user });
-  //   }
-  // };
+  login = (user) => {
+    if (user) {
+      this.setState({ user });
+    }
+  };
 
   //When user logs out the cart is cleared and
   //user is redirected to main landing page
-  // logout = (event) => {
-  //   event.preventDefault();
-  //   try {
-  //     Auth.signOut();
-  //     this.setState({ user: null });
-  //     this.routerRef.current.history.push("/login");
-  //   } catch (err) {
-  //     console.error(err.message);
-  //   }
-  // };
+  logout = (event) => {
+    event.preventDefault();
+    try {
+      Auth.signOut();
+      this.setState({ user: null });
+      this.routerRef.current.history.push("/login");
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
 
   //Load products fromm database on Component Mount
   //Also if any user was authenticated get his details
   //Update user and product details after finishing the async call
-  // componentDidMount() {
-  //   Auth.currentAuthenticatedUser()
-  //     .then((user) => {
-  //       if (user) this.setState({ user: user });
-  //     })
-  //     .catch(() => {
-  //       this.setState({
-  //         user: null,
-  //       });
-  //     });
-  // }
+  componentDidMount() {
+    Auth.currentAuthenticatedUser()
+      .then((user) => {
+        if (user) this.setState({ user: user });
+      })
+      .catch(() => {
+        this.setState({
+          user: null,
+        });
+      });
+  }
 
   render() {
     return (
       <Context.Provider
         value={{
-        //   ...this.state,
-        //   login: this.login,
-        //   logout: this.logout,
+          ...this.state,
+          login: this.login,
+          logout: this.logout,
         }}
       >
         <Router ref={this.routerRef}>
@@ -69,8 +66,8 @@ export default class App extends Component {
             <Navbar />
             <Switch>
               <Route exact path="/" component={Home} />
-              {/* <Route exact path="/login" component={Login} />
-              <Route exact path="/register" component={Register} /> */}
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/register" component={Register} />
             </Switch>
           </div>
         </Router>
