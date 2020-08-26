@@ -5,7 +5,7 @@ import withContext from "../../withContext";
 import axios from "axios";
 import MaterialTable from 'material-table';
 
-const BASE_URL = "http://localhost:3001";
+const BASE_URL = "http://ec2-3-14-85-79.us-east-2.compute.amazonaws.com:3001";
 
 class Home extends Component {
   constructor(props) {
